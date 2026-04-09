@@ -1,173 +1,919 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chris Mahadeo — AI Payments & Supply Chain Automation</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chris Mahadeo — Payments Strategy & Ecosystem Partnerships</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Geist+Mono:wght@300;400&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0b;
+    --ink-2: #2a2a26;
+    --ink-3: #4a4a44;
+    --ink-4: #7a7a72;
+    --paper: #f5f2eb;
+    --paper-2: #ede9df;
+    --paper-3: #e2ddd1;
+    --gold: #b8933a;
+    --gold-light: #d4ae62;
+    --blue-deep: #0e2744;
+    --blue-mid: #184a8a;
+    --blue-accent: #2b6cb8;
+    --green: #166534;
+    --green-light: #22c55e;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'Geist Mono', monospace;
+    --sans: 'Geist', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(245, 242, 235, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid rgba(0,0,0,0.08);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--blue-deep);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 7rem 4rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -40%; left: -30%;
+    width: 120%; height: 120%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(43, 108, 184, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: #f0ece2;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+
+  .hero-tagline {
+    font-size: 0.9rem;
+    color: rgba(240, 236, 226, 0.55);
+    font-weight: 300;
+    max-width: 340px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .badge {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 0.5px solid rgba(184, 147, 58, 0.4);
+    color: var(--gold-light);
+    border-radius: 2px;
+  }
+
+  .badge.green {
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #86efac;
+  }
+
+  .hero-right {
+    background: var(--paper-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 4rem 5rem 5rem;
+    position: relative;
+  }
+
+  .hero-right::after {
+    content: '"';
+    position: absolute;
+    top: 5rem; right: 3rem;
+    font-family: var(--serif);
+    font-size: 18rem;
+    color: rgba(0,0,0,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .hero-statement {
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink-2);
+    max-width: 460px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .hero-statement strong {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--blue-mid);
+  }
+
+  .hero-cta {
+    margin-top: 3rem;
+    display: flex;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--blue-deep);
+    color: #f0ece2;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--blue-mid); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 0.5px solid var(--ink-3);
+    color: var(--ink-2);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 0; }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 3rem;
+  }
+
+  /* ─── DIFFERENTIATORS ─── */
+  #differentiators { background: var(--paper); }
+
+  .diff-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  .diff-body {
+    font-size: 1rem;
+    color: var(--ink-3);
+    line-height: 1.8;
+  }
+
+  .diff-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--paper-3);
+    border: 1px solid var(--paper-3);
+  }
+
+  .diff-card {
+    background: var(--paper);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .diff-card:hover { background: var(--paper-2); }
+
+  .diff-num {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--paper-3);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .diff-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .diff-desc {
+    font-size: 0.875rem;
+    color: var(--ink-3);
+    line-height: 1.75;
+  }
+
+  .diff-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 2rem;
+    width: 0; height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+  .diff-card:hover::after { width: calc(100% - 4rem); }
+
+  /* ─── EXPERIENCE ─── */
+  #experience { background: var(--blue-deep); color: #f0ece2; }
+  #experience .section-heading { color: #f0ece2; }
+
+  .exp-list { display: flex; flex-direction: column; gap: 0; }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  }
+
+  .exp-item:last-child { border-bottom: none; }
+
+  .exp-org {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--gold-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-role {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    color: rgba(240,236,226,0.4);
+    text-transform: uppercase;
+  }
+
+  .exp-content-text {
+    font-size: 0.9rem;
+    color: rgba(240,236,226,0.7);
+    line-height: 1.8;
+  }
+
+  .exp-content-text p { margin-bottom: 0.5rem; }
+  .exp-content-text p:last-child { margin-bottom: 0; }
+
+  /* ─── OPEN SOURCE PROJECTS ─── */
+  #projects { background: var(--paper-2); }
+
+  .projects-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  .projects-intro-body {
+    font-size: 1rem;
+    color: var(--ink-3);
+    line-height: 1.8;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--paper);
+    border: 0.5px solid var(--paper-3);
+    border-top: 3px solid var(--blue-mid);
+    padding: 2.5rem 2rem;
+    border-radius: 2px;
+    position: relative;
+    transition: background 0.2s, border-top-color 0.2s;
+    text-decoration: none;
+    display: block;
+    color: inherit;
+  }
+
+  .project-card:hover {
+    background: var(--paper-2);
+    border-top-color: var(--gold);
+  }
+
+  .project-card.featured { border-top-color: var(--green); }
+  .project-card.featured:hover { border-top-color: var(--gold); }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .project-card.featured .project-tag { color: var(--green); }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-stack span {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-4);
+    background: var(--paper-2);
+    border: 0.5px solid var(--paper-3);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .project-arrow {
+    position: absolute;
+    top: 2rem; right: 2rem;
+    font-size: 1rem;
+    color: var(--paper-3);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  .project-card:hover .project-arrow {
+    color: var(--gold);
+    transform: translate(2px, -2px);
+  }
+
+  /* ─── ENGAGEMENT ─── */
+  #engagement { background: var(--paper); }
+
+  .engage-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .engage-card {
+    background: var(--paper-2);
+    border: 0.5px solid var(--paper-3);
+    border-left: 3px solid var(--blue-mid);
+    padding: 2rem;
+    border-radius: 2px;
+  }
+
+  .engage-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .engage-desc {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    line-height: 1.75;
+  }
+
+  /* ─── IDEAL CLIENTS ─── */
+  #clients { background: var(--paper-2); }
+
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .client-card {
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--ink);
+  }
+
+  .client-type {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .client-heading {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .client-desc {
+    font-size: 0.85rem;
+    color: var(--ink-3);
+    line-height: 1.75;
+  }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 6rem 0;
+    text-align: center;
+  }
+
+  #contact .section-label { color: var(--gold-light); }
+  #contact .section-heading { color: var(--paper); margin-bottom: 1rem; }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    color: rgba(245,242,235,0.5);
+    margin-bottom: 3rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,242,235,0.6);
+    text-decoration: none;
+    border: 0.5px solid rgba(245,242,235,0.15);
+    padding: 12px 24px;
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(245,242,235,0.25);
+    text-transform: uppercase;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { min-height: 60vh; padding: 7rem 2rem 3rem; }
+    .hero-right { padding: 3rem 2rem; }
+    .hero-right::after { display: none; }
+    .diff-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .diff-cards { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .projects-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .engage-grid { grid-template-columns: 1fr; }
+    .clients-grid { grid-template-columns: 1fr; }
+    .container { padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- Nav -->
-  <nav>
-    <div class="nav-inner">
-      <span class="nav-brand">CM</span>
-      <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#focus">Focus</a>
-        <a href="#about">About</a>
-        <a href="https://github.com/cmahadeo77" target="_blank" rel="noopener">GitHub</a>
-      </div>
-    </div>
-  </nav>
+<nav>
+  <a class="nav-logo" href="#top">Chris Mahadeo</a>
+  <ul class="nav-links">
+    <li><a href="#differentiators">Differentiators</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#engagement">Engagements</a></li>
+    <li><a href="#clients">Ideal Clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="badge">AI · Payments · Supply Chain</div>
-      <h1>Building the infrastructure<br>for mission commerce.</h1>
-      <p class="hero-sub">
-        Stablecoin payment rails for global ingredient sourcing. AI-powered formulation
-        and COA validation. Automation tools for personal care brands that source
-        ethically and move fast.
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-left">
+    <div class="hero-grid-lines"></div>
+    <div class="hero-eyebrow">Payments Strategy &amp; Ecosystem Partnerships</div>
+    <h1 class="hero-name">Chris<br><em>Mahadeo</em></h1>
+    <p class="hero-tagline">Senior strategist with dual-network experience across Visa and Mastercard — available for project consulting, advisory, and interim engagements.</p>
+    <div class="hero-badges">
+      <span class="badge">Visa</span>
+      <span class="badge">Mastercard</span>
+      <span class="badge">Fintech</span>
+      <span class="badge">Bay Area</span>
+      <span class="badge green">Stablecoin Payments</span>
+      <span class="badge green">AI Automation</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <p class="hero-statement">
+      I am one of a small number of senior strategists who has operated inside <strong>both Visa and Mastercard</strong> — giving me a rare, dual-network view of how the global payments ecosystem actually works, where leverage points sit, and how partnerships get built, broken, and rebuilt at scale.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#differentiators" class="btn-ghost">See my edge</a>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section id="differentiators">
+  <div class="container">
+    <div class="diff-intro reveal">
+      <div>
+        <span class="section-label">What sets me apart</span>
+        <h2 class="section-heading">Four edges, rare in combination</h2>
+      </div>
+      <p class="diff-body">
+        Most payments strategists have depth on one side of the ecosystem. I have cross-network fluency, technical range, and the operator instincts of someone who has run a business independently — all at once. That combination is what makes complex engagements move faster.
       </p>
-      <div class="hero-actions">
-        <a href="#work" class="btn-primary">See the work</a>
-        <a href="https://www.arikina.com" target="_blank" rel="noopener" class="btn-secondary">Arikina →</a>
+    </div>
+    <div class="diff-cards reveal">
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <div class="diff-title">Dual-network insider</div>
+        <p class="diff-desc">Visa and Mastercard experience is rare at the senior level. I understand both sides of network strategy, incentive structures, and partner economics from the inside — not from a consultant's briefing doc.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <div class="diff-title">Strategy meets technical depth</div>
+        <p class="diff-desc">I engage at the API and product layer, not just the boardroom. I bridge business model design with the technical realities of payments infrastructure — rails, real-time settlement, stablecoin, and embedded finance.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <div class="diff-title">Full ecosystem fluency</div>
+        <p class="diff-desc">Issuers, acquirers, processors, fintechs, BaaS providers, embedded finance platforms — I understand how each party's P&amp;L connects to the next, and where deals actually get made.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">04</div>
+        <div class="diff-title">Operator building in production</div>
+        <p class="diff-desc">I run Arikina and build AI + stablecoin payment tools in production — not side projects. Real supplier contracts, real money, real automation. That changes how I think about client problems.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Work -->
-  <section class="section" id="work">
-    <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <p class="section-sub">Open source tools built for real operations — payments, formulation, intelligence, and automation.</p>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <span class="section-label reveal">Background</span>
+    <h2 class="section-heading reveal">Where I've been</h2>
+    <div class="exp-list">
 
-      <div class="projects-grid">
-
-        <div class="project-card featured">
-          <div class="project-tag">Payments</div>
-          <h3>Stablecoin B2B Sourcing</h3>
-          <p>USDC escrow payment system for cross-border ingredient sourcing. Smart contract replaces letters of credit — funds release on delivery confirmation. Saves 2–5% per transaction vs wire transfers.</p>
-          <div class="project-stack">
-            <span>USDC</span><span>Stellar</span><span>Solidity</span><span>Python</span><span>Circle API</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/cmahadeo77/stablecoin-b2b-sourcing" target="_blank" rel="noopener">GitHub →</a>
-          </div>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-org">Visa</div>
+          <div class="exp-role">Payments Strategy &amp; Partnerships</div>
         </div>
-
-        <div class="project-card featured">
-          <div class="project-tag">Supply Chain · AI</div>
-          <h3>Formulation & COA Automation</h3>
-          <p>Claude-powered INCI formula generator from a plain-language product brief. Auto-builds ingredient spec sheets. Validates supplier COAs — PASS triggers PO, FAIL generates rejection report. Full chain from formula to payment.</p>
-          <div class="project-stack">
-            <span>Claude API</span><span>Python</span><span>Streamlit</span><span>PyMuPDF</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/cmahadeo77/formulation-sourcing-automation" target="_blank" rel="noopener">GitHub →</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-tag">Intelligence</div>
-          <h3>Payments Signal Monitor</h3>
-          <p>Daily AI-powered scan of stablecoin, CBDC, and fintech signals across X and key financial accounts. Claude scores each signal: Buy / Watch / Noise. Delivered to Slack + Notion before markets open.</p>
-          <div class="project-stack">
-            <span>n8n</span><span>Claude API</span><span>Notion</span><span>Slack</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/cmahadeo77/n8n-payments-intelligence" target="_blank" rel="noopener">GitHub →</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-tag">Automation</div>
-          <h3>n8n Intelligence Stack</h3>
-          <p>Five-workflow automation system: market signals, product spotlights, social publishing, email prioritization, and weekly newsletter curation. Fully automated brand intelligence and content pipeline.</p>
-          <div class="project-stack">
-            <span>n8n</span><span>Claude API</span><span>Gmail API</span><span>LinkedIn</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/cmahadeo77/n8n-workflows" target="_blank" rel="noopener">GitHub →</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Focus -->
-  <section class="section alt" id="focus">
-    <div class="container">
-      <h2 class="section-title">Focus Areas</h2>
-      <div class="focus-grid">
-
-        <div class="focus-item">
-          <div class="focus-icon">₿</div>
-          <h4>Stablecoin Payments</h4>
-          <p>USDC on Stellar and Solana as B2B payment infrastructure — faster, cheaper, and programmable vs correspondent banking wires.</p>
-        </div>
-
-        <div class="focus-item">
-          <div class="focus-icon">🧪</div>
-          <h4>AI Formulation</h4>
-          <p>LLM-powered cosmetic formulation — INCI generation, regulatory compliance, and spec-to-sourcing automation for personal care brands.</p>
-        </div>
-
-        <div class="focus-item">
-          <div class="focus-icon">🌍</div>
-          <h4>Supply Chain Finance</h4>
-          <p>Escrow-based trade finance for global ingredient supply chains. Smart contracts as the trust layer between brands and international suppliers.</p>
-        </div>
-
-        <div class="focus-item">
-          <div class="focus-icon">⚡</div>
-          <h4>Business Automation</h4>
-          <p>n8n and Claude-powered workflows that replace manual intelligence gathering, email triage, and reporting with automated, AI-scored outputs.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="section" id="about">
-    <div class="container about-inner">
-      <div class="about-text">
-        <h2>About</h2>
-        <p>
-          Founder of <a href="https://www.arikina.com" target="_blank" rel="noopener">Arikina</a> — a trading and consulting company
-          operating across personal care, natural products, and mission-driven commerce.
-        </p>
-        <p>
-          The tools here are built for real operations. Each project started as an internal need —
-          faster supplier payments, automated quality validation, AI-scored market intelligence —
-          and became open infrastructure for other founders navigating the same problems.
-        </p>
-        <p>
-          Currently focused on the intersection of stablecoin payment rails and personal care supply chains,
-          and on building AI automation that gives small brands the operational leverage of much larger ones.
-        </p>
-        <div class="about-links">
-          <a href="mailto:hello@arikina.com">hello@arikina.com</a>
-          <a href="https://github.com/cmahadeo77" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://www.arikina.com" target="_blank" rel="noopener">arikina.com</a>
+        <div class="exp-content-text">
+          <p>Led ecosystem development initiatives spanning issuer, acquirer, and fintech relationships. Developed go-to-market frameworks for Visa Direct and emerging payment rails.</p>
+          <p>Translated network-level strategy into actionable partnership structures, managing C-suite relationships across the payments value chain.</p>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <span>Chris Mahadeo · Arikina</span>
-      <span>Built with purpose.</span>
-    </div>
-  </footer>
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-org">Mastercard</div>
+          <div class="exp-role">Ecosystem Partnerships</div>
+        </div>
+        <div class="exp-content-text">
+          <p>Drove cross-functional partnerships across the acceptance and issuance value chain. Built relationship frameworks with fintechs and strategic platform partners.</p>
+          <p>Delivered competitive intelligence and strategic positioning across payment verticals, with focus on product commercialization and partner economics.</p>
+        </div>
+      </div>
 
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-org">Arikina</div>
+          <div class="exp-role">Founder &amp; Principal</div>
+        </div>
+        <div class="exp-content-text">
+          <p>Founded and operate a B2B naturals ingredients business (Charasmatic Trading &amp; Consulting / Sunshine Naturals) based in Northern California. End-to-end accountability across supplier negotiation, customer acquisition, pricing strategy, and brand positioning.</p>
+          <p>Building the next layer: stablecoin payment rails for cross-border ingredient sourcing, AI-powered formulation automation, and COA-gated supply chain tooling — open-sourced at <a href="https://github.com/cmahadeo77" target="_blank" style="color: var(--gold-light);">github.com/cmahadeo77</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OPEN SOURCE PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="projects-intro reveal">
+      <div>
+        <span class="section-label">Building in public</span>
+        <h2 class="section-heading">Open source work</h2>
+      </div>
+      <p class="projects-intro-body">
+        Each project started as an internal operational need — faster supplier payments, automated quality validation, AI-scored market intelligence — and became open infrastructure for other founders navigating the same problems. The tools are production-grade, not demos.
+      </p>
+    </div>
+    <div class="projects-grid">
+
+      <a class="project-card featured reveal" href="https://github.com/cmahadeo77/stablecoin-b2b-sourcing" target="_blank" rel="noopener">
+        <span class="project-arrow">↗</span>
+        <div class="project-tag">Payments · Supply Chain</div>
+        <div class="project-title">Stablecoin B2B Sourcing</div>
+        <p class="project-desc">USDC escrow payment system for cross-border ingredient sourcing. Smart contract replaces letters of credit — funds release on delivery confirmation. Eliminates 2–5% wire fee drag on every international supplier payment.</p>
+        <div class="project-stack">
+          <span>USDC</span><span>Stellar</span><span>Solidity</span><span>Python</span><span>Circle API</span>
+        </div>
+      </a>
+
+      <a class="project-card featured reveal" href="https://github.com/cmahadeo77/formulation-sourcing-automation" target="_blank" rel="noopener">
+        <span class="project-arrow">↗</span>
+        <div class="project-tag">AI · R&D · Supply Chain</div>
+        <div class="project-title">Formulation & COA Automation</div>
+        <p class="project-desc">Market scanner + Claude-powered INCI formula generator + automated COA validation. Formula is generated with live market context injected. COA PASS triggers PO; FAIL auto-generates supplier rejection report. Full chain from product brief to stablecoin payment.</p>
+        <div class="project-stack">
+          <span>Claude API</span><span>Open Beauty Facts</span><span>Google Trends</span><span>PyMuPDF</span><span>Streamlit</span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/cmahadeo77/n8n-payments-intelligence" target="_blank" rel="noopener">
+        <span class="project-arrow">↗</span>
+        <div class="project-tag">Intelligence · Automation</div>
+        <div class="project-title">Payments Signal Monitor</div>
+        <p class="project-desc">Daily AI-powered scan of stablecoin, CBDC, and fintech signals across X and key financial accounts. Claude scores each signal: Buy / Watch / Noise. Delivered to Slack + Notion before markets open.</p>
+        <div class="project-stack">
+          <span>n8n</span><span>Claude API</span><span>Notion</span><span>Slack</span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/cmahadeo77/n8n-workflows" target="_blank" rel="noopener">
+        <span class="project-arrow">↗</span>
+        <div class="project-tag">Automation · Content</div>
+        <div class="project-title">n8n Intelligence Stack</div>
+        <p class="project-desc">Five-workflow automation system: market signals, product spotlights, social publishing, email prioritization, and weekly newsletter curation. Fully automated brand intelligence and content pipeline.</p>
+        <div class="project-stack">
+          <span>n8n</span><span>Claude API</span><span>Gmail API</span><span>LinkedIn</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT TYPES -->
+<section id="engagement">
+  <div class="container">
+    <span class="section-label reveal">How I work</span>
+    <h2 class="section-heading reveal">Engagement types</h2>
+    <div class="engage-grid">
+      <div class="engage-card reveal">
+        <div class="engage-title">Project consulting</div>
+        <p class="engage-desc">Payments strategy, go-to-market design, partnership frameworks, stablecoin payment architecture, competitive landscape analysis, and ecosystem mapping. Typically 4–12 week engagements with defined deliverables.</p>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-title">Expert advisory calls</div>
+        <p class="engage-desc">One-to-one advisory for investors, operators, and PE firms on network economics, card scheme strategy, fintech ecosystem dynamics, stablecoin B2B applications, and embedded finance. Available via BTG, GLG, and direct.</p>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-title">Interim / fractional leadership</div>
+        <p class="engage-desc">VP/Director-level coverage for payments strategy or BD/partnerships functions during transitions, launches, or gaps. Available for immediate start.</p>
+      </div>
+      <div class="engage-card reveal">
+        <div class="engage-title">Due diligence support</div>
+        <p class="engage-desc">PE and VC sector assessments for payments infrastructure, processing, and issuer-side assets. TAM sizing, partner vetting, network analysis, and competitive moat evaluation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDEAL CLIENTS -->
+<section id="clients">
+  <div class="container">
+    <span class="section-label reveal">Who I work with</span>
+    <h2 class="section-heading reveal">Where I add the most value</h2>
+    <div class="clients-grid">
+      <div class="client-card reveal">
+        <div class="client-type">Fintech scale-ups</div>
+        <div class="client-heading">Building on rails and ecosystem partnerships</div>
+        <p class="client-desc">Companies building on card rails, real-time payments, stablecoin, or embedded finance that need someone who understands how to structure deals with networks and processors — and what each party actually cares about.</p>
+      </div>
+      <div class="client-card reveal">
+        <div class="client-type">PE &amp; Growth Investors</div>
+        <div class="client-heading">Evaluating payments infrastructure assets</div>
+        <p class="client-desc">Firms assessing acquiring, issuer-side, or processing assets who need a practitioner — not a generalist — to evaluate product-market fit, competitive moat, and ecosystem positioning with credibility.</p>
+      </div>
+      <div class="client-card reveal">
+        <div class="client-type">Enterprise strategy teams</div>
+        <div class="client-heading">Entering or expanding in payments</div>
+        <p class="client-desc">Large organizations entering payments who need cross-network context, partner identification, and go-to-market structure built by someone who has done it at the network level — not theorized it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">Get in touch</span>
+    <h2 class="section-heading">Let's talk about your engagement</h2>
+    <p class="contact-sub">Available for project-based consulting, advisory calls, and interim roles. Danville / San Ramon, CA · Remote available globally.</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/cmahadeo" class="contact-link" target="_blank">↗ LinkedIn</a>
+      <a href="https://github.com/cmahadeo77" class="contact-link" target="_blank">↗ GitHub Portfolio</a>
+      <a href="https://www.arikina.com" class="contact-link" target="_blank">↗ Arikina</a>
+      <a href="mailto:hello@arikina.com" class="contact-link">↗ Email directly</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Chris Mahadeo — Payments Strategy &amp; Ecosystem Partnerships</p>
+  <p>Danville, CA · Available globally</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
