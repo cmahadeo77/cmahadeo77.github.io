@@ -391,6 +391,147 @@
   .exp-content-text p { margin-bottom: 0.5rem; }
   .exp-content-text p:last-child { margin-bottom: 0; }
 
+  /* ─── BD / PARTNERSHIPS ─── */
+  #bd { background: var(--ink); color: #f0ece2; }
+  #bd .section-label { color: var(--gold-light); }
+  #bd .section-heading { color: #f0ece2; }
+
+  .bd-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    margin-bottom: 5rem;
+  }
+
+  .bd-intro-body {
+    font-size: 0.95rem;
+    color: rgba(240,236,226,0.65);
+    line-height: 1.85;
+  }
+
+  /* Upstream / downstream positioning strip */
+  .bd-spectrum {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 5rem;
+  }
+
+  .bd-spectrum-item {
+    background: var(--ink);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .bd-spectrum-item:hover { background: #141414; }
+
+  .bd-spectrum-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .bd-spectrum-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #f0ece2;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .bd-spectrum-desc {
+    font-size: 0.82rem;
+    color: rgba(240,236,226,0.55);
+    line-height: 1.8;
+  }
+
+  .bd-spectrum-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .bd-spectrum-item:hover::after { transform: scaleX(1); }
+
+  /* BD Framework steps */
+  .bd-framework-title {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(240,236,226,0.35);
+    margin-bottom: 2rem;
+  }
+
+  .bd-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 0.5px solid rgba(255,255,255,0.08);
+  }
+
+  .bd-step {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    transition: background 0.15s;
+  }
+
+  .bd-step:last-child { border-bottom: none; }
+  .bd-step:hover { background: rgba(255,255,255,0.02); }
+
+  .bd-step-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.06);
+    padding: 2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-right: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .bd-step-phase {
+    padding: 2rem 2rem;
+    border-right: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .bd-step-phase-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-bottom: 0.4rem;
+  }
+
+  .bd-step-phase-sub {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: rgba(240,236,226,0.3);
+    text-transform: uppercase;
+  }
+
+  .bd-step-detail {
+    padding: 2rem 2rem;
+    font-size: 0.82rem;
+    color: rgba(240,236,226,0.55);
+    line-height: 1.75;
+  }
+
   /* ─── OPEN SOURCE PROJECTS ─── */
   #projects { background: var(--paper-2); }
 
@@ -643,6 +784,10 @@
     .diff-intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .diff-cards { grid-template-columns: 1fr; }
     .exp-item { grid-template-columns: 1fr; gap: 1rem; }
+    .bd-intro { grid-template-columns: 1fr; gap: 1.5rem; }
+    .bd-spectrum { grid-template-columns: 1fr; }
+    .bd-step { grid-template-columns: 48px 1fr; }
+    .bd-step-detail { display: none; }
     .projects-intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .engage-grid { grid-template-columns: 1fr; }
@@ -659,6 +804,7 @@
   <ul class="nav-links">
     <li><a href="#differentiators">Differentiators</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#bd">BD &amp; Partnerships</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#engagement">Engagements</a></li>
     <li><a href="#clients">Ideal Clients</a></li>
@@ -771,6 +917,105 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- BD & PARTNERSHIPS -->
+<section id="bd">
+  <div class="container">
+
+    <div class="bd-intro reveal">
+      <div>
+        <span class="section-label">Partnership Development</span>
+        <h2 class="section-heading">How I build upstream</h2>
+      </div>
+      <p class="bd-intro-body">
+        Most BD work fails at the structural level — not because relationships aren't built, but because the partnership economics aren't designed to survive contact with the other party's P&amp;L. My approach starts with how each party makes money, then works backward to what the partnership needs to look like for it to last. I have done this at Visa, at Mastercard, and now operationally at Arikina — across payment networks, fintech platforms, ingredient suppliers, and distribution partners.
+      </p>
+    </div>
+
+    <!-- Upstream / midstream / downstream spectrum -->
+    <div class="bd-spectrum reveal">
+      <div class="bd-spectrum-item">
+        <div class="bd-spectrum-label">Upstream</div>
+        <div class="bd-spectrum-title">Network &amp; Platform Partners</div>
+        <p class="bd-spectrum-desc">Card networks, core processors, BaaS platforms, stablecoin rails. Relationships at this layer define the economics everything downstream inherits. I have operated here — not just advised on it.</p>
+      </div>
+      <div class="bd-spectrum-item">
+        <div class="bd-spectrum-label">Midstream</div>
+        <div class="bd-spectrum-title">Fintech &amp; Issuer Partnerships</div>
+        <p class="bd-spectrum-desc">Fintechs building on rails, embedded finance players, issuers expanding into new verticals. The deal structures here require fluency on both the commercial and technical sides simultaneously.</p>
+      </div>
+      <div class="bd-spectrum-item">
+        <div class="bd-spectrum-label">Downstream</div>
+        <div class="bd-spectrum-title">Distribution &amp; Commercial Partners</div>
+        <p class="bd-spectrum-desc">Merchants, distributors, ingredient suppliers, and brand channels. Operational partnership experience — real contracts, real negotiations, real consequences. Grounded in running Arikina day-to-day.</p>
+      </div>
+    </div>
+
+    <!-- BD Framework -->
+    <div class="reveal">
+      <div class="bd-framework-title">Partnership development framework</div>
+      <div class="bd-steps">
+
+        <div class="bd-step">
+          <div class="bd-step-num">01</div>
+          <div class="bd-step-phase">
+            <div class="bd-step-phase-name">Ecosystem Mapping</div>
+            <div class="bd-step-phase-sub">Weeks 1–2</div>
+          </div>
+          <div class="bd-step-detail">
+            Identify who controls leverage in the target ecosystem. Map the P&amp;L flow — who captures interchange, who owns the relationship, who has the switching cost. Surfaces the right partners before outreach begins.
+          </div>
+        </div>
+
+        <div class="bd-step">
+          <div class="bd-step-num">02</div>
+          <div class="bd-step-phase">
+            <div class="bd-step-phase-name">Value Architecture</div>
+            <div class="bd-step-phase-sub">Weeks 2–3</div>
+          </div>
+          <div class="bd-step-detail">
+            Design the commercial structure from both sides of the table. What does the partner gain economically? What do they give up? Where are the natural misalignments, and how do you build around them before the term sheet?
+          </div>
+        </div>
+
+        <div class="bd-step">
+          <div class="bd-step-num">03</div>
+          <div class="bd-step-phase">
+            <div class="bd-step-phase-name">Warm Entry</div>
+            <div class="bd-step-phase-sub">Weeks 3–5</div>
+          </div>
+          <div class="bd-step-detail">
+            Network-native introductions where possible. Cold outreach where not — but framed around their business context, not a pitch deck. Entry through working-level relationships before escalating to decision-makers.
+          </div>
+        </div>
+
+        <div class="bd-step">
+          <div class="bd-step-num">04</div>
+          <div class="bd-step-phase">
+            <div class="bd-step-phase-name">Commercial Structuring</div>
+            <div class="bd-step-phase-sub">Weeks 5–8</div>
+          </div>
+          <div class="bd-step-detail">
+            Revenue share, volume incentives, exclusivity windows, MFN clauses, co-marketing commitments. Structuring that closes and survives — not just terms that get signed and then ignored at first renewal.
+          </div>
+        </div>
+
+        <div class="bd-step">
+          <div class="bd-step-num">05</div>
+          <div class="bd-step-phase">
+            <div class="bd-step-phase-name">Activation &amp; Governance</div>
+            <div class="bd-step-phase-sub">Ongoing</div>
+          </div>
+          <div class="bd-step-detail">
+            Launch playbook, joint GTM motion, QBR cadence, and escalation paths. Partnerships that don't activate die quietly — governance keeps them alive and compounding.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
