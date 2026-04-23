@@ -366,6 +366,25 @@
 
   .exp-item:last-child { border-bottom: none; }
 
+  .exp-logo {
+    display: block;
+    height: 26px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
+    object-position: left center;
+    margin-bottom: 0.7rem;
+    filter: brightness(0) invert(1);
+    opacity: 0.75;
+  }
+
+  .exp-logo.arikina-logo {
+    filter: none;
+    opacity: 1;
+    height: 30px;
+    max-width: 130px;
+  }
+
   .exp-org {
     font-family: var(--serif);
     font-size: 1.25rem;
@@ -885,6 +904,7 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <img src="https://logo.clearbit.com/visa.com" alt="Visa" class="exp-logo"/>
           <div class="exp-org">Visa</div>
           <div class="exp-role">Payments Strategy &amp; Partnerships</div>
         </div>
@@ -896,6 +916,7 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <img src="https://logo.clearbit.com/mastercard.com" alt="Mastercard" class="exp-logo"/>
           <div class="exp-org">Mastercard</div>
           <div class="exp-role">Ecosystem Partnerships</div>
         </div>
@@ -907,6 +928,7 @@
 
       <div class="exp-item reveal">
         <div class="exp-meta">
+          <img src="https://arikina.com/cdn/shop/files/Arikina_Logo_-_New_Green_c39ceec5-eabb-4ab7-bee5-07072f2160c1.png?v=1694537559&width=600" alt="Arikina" class="exp-logo arikina-logo"/>
           <div class="exp-org">Arikina</div>
           <div class="exp-role">Founder &amp; Principal</div>
         </div>
