@@ -773,6 +773,117 @@
   }
   .reveal.visible { opacity: 1; transform: none; }
 
+  /* ─── AGENTIC THESIS ─── */
+  #thesis { background: #0d1f13; color: #f0ece2; }
+  #thesis .section-label { color: #86efac; }
+  #thesis .section-heading { color: #f0ece2; }
+
+  .thesis-statement {
+    font-family: var(--serif);
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.75;
+    color: rgba(240,236,226,0.8);
+    max-width: 780px;
+    border-left: 2px solid #86efac;
+    padding-left: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .thesis-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 3.5rem;
+  }
+
+  .thesis-pillar {
+    background: #0d1f13;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: background 0.2s;
+  }
+
+  .thesis-pillar:hover { background: #122a1a; }
+
+  .thesis-pillar-num {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(134,239,172,0.1);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .thesis-pillar-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #86efac;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .thesis-pillar-body {
+    font-size: 0.85rem;
+    color: rgba(240,236,226,0.58);
+    line-height: 1.8;
+  }
+
+  .thesis-stack {
+    background: rgba(255,255,255,0.03);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    padding: 1.75rem 2.5rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .thesis-stack-label {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,236,226,0.28);
+    white-space: nowrap;
+  }
+
+  .thesis-stack-steps {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .thesis-stack-step {
+    font-family: var(--mono);
+    font-size: 0.63rem;
+    letter-spacing: 0.05em;
+    color: #86efac;
+    background: rgba(134,239,172,0.07);
+    border: 0.5px solid rgba(134,239,172,0.2);
+    padding: 5px 12px;
+    border-radius: 2px;
+  }
+
+  .thesis-stack-arrow { color: rgba(240,236,226,0.18); font-size: 0.7rem; }
+
+  .thesis-closing {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(240,236,226,0.4);
+    line-height: 1.8;
+    max-width: 700px;
+  }
+
+  .thesis-closing strong { font-weight: 600; font-style: normal; color: rgba(240,236,226,0.65); }
+
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     nav { padding: 1.25rem 1.5rem; }
@@ -788,6 +899,8 @@
     .bd-spectrum { grid-template-columns: 1fr; }
     .bd-step { grid-template-columns: 48px 1fr; }
     .bd-step-detail { display: none; }
+    .thesis-pillars { grid-template-columns: 1fr; }
+    .thesis-stack { flex-direction: column; align-items: flex-start; gap: 1rem; }
     .projects-intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .engage-grid { grid-template-columns: 1fr; }
@@ -805,6 +918,7 @@
     <li><a href="#differentiators">Differentiators</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#bd">BD &amp; Partnerships</a></li>
+    <li><a href="#thesis">Agentic Thesis</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#engagement">Engagements</a></li>
     <li><a href="#clients">Ideal Clients</a></li>
@@ -1015,6 +1129,59 @@
 
       </div>
     </div>
+
+  </div>
+</section>
+
+<!-- AGENTIC COMMERCE THESIS -->
+<section id="thesis">
+  <div class="container">
+
+    <div class="reveal">
+      <span class="section-label">Operating Thesis</span>
+      <h2 class="section-heading">Arikina and the agentic commerce layer</h2>
+    </div>
+
+    <p class="thesis-statement reveal">
+      The B2B workflows that define most industries today &mdash; supplier discovery, document validation, procurement, cross-border payment &mdash; were designed for humans operating at human speed, with human error rates, over human communication channels. AI agents don&rsquo;t just accelerate those workflows. They eliminate the distinction between intelligence and execution.
+    </p>
+
+    <div class="thesis-pillars reveal">
+      <div class="thesis-pillar">
+        <div class="thesis-pillar-num">01</div>
+        <div class="thesis-pillar-title">The collapse of the sourcing loop</div>
+        <p class="thesis-pillar-body">B2B supplier discovery has always been slow because it requires human judgment at every step: find, qualify, validate, negotiate, pay. An agent stack collapses that loop. Discovery runs in parallel across hundreds of suppliers. Certification validation happens in milliseconds. Payment triggers on delivery confirmation. The human moves from operator to exception-handler.</p>
+      </div>
+      <div class="thesis-pillar">
+        <div class="thesis-pillar-num">02</div>
+        <div class="thesis-pillar-title">Why ingredients are the right beachhead</div>
+        <p class="thesis-pillar-body">The naturals ingredient supply chain is one of the most cert-dense, traceability-required verticals in B2B commerce. Every transaction requires multi-document validation &mdash; COA, MSDS, origin certificates, INCI compliance. That complexity is exactly why agents generate disproportionate value here. Arikina is not a demo environment. It is a live operational test bed with real suppliers, real contracts, and real money moving.</p>
+      </div>
+      <div class="thesis-pillar">
+        <div class="thesis-pillar-num">03</div>
+        <div class="thesis-pillar-title">The compounding moat</div>
+        <p class="thesis-pillar-body">The companies that win in agentic B2B commerce will not win because they deployed agents first. They will win because each agent interaction generates structured operational data &mdash; supplier reliability patterns, COA pass/fail rates, pricing signals, certification expiry cycles &mdash; that makes the next interaction smarter. The moat is not the agents. It is the data they accumulate.</p>
+      </div>
+    </div>
+
+    <div class="thesis-stack reveal">
+      <div class="thesis-stack-label">Arikina stack</div>
+      <div class="thesis-stack-steps">
+        <span class="thesis-stack-step">Supplier Discovery</span>
+        <span class="thesis-stack-arrow">&#8594;</span>
+        <span class="thesis-stack-step">COA Validation</span>
+        <span class="thesis-stack-arrow">&#8594;</span>
+        <span class="thesis-stack-step">Formula Generation</span>
+        <span class="thesis-stack-arrow">&#8594;</span>
+        <span class="thesis-stack-step">PO Automation</span>
+        <span class="thesis-stack-arrow">&#8594;</span>
+        <span class="thesis-stack-step">Stablecoin Settlement</span>
+      </div>
+    </div>
+
+    <p class="thesis-closing reveal">
+      This is not a thesis about ingredients specifically. <strong>Every B2B vertical that requires document-gated, compliance-aware procurement has the same underlying structure.</strong> The naturals supply chain is where the thesis is being stress-tested &mdash; in production, at real commercial scale, with no safety net.
+    </p>
 
   </div>
 </section>
